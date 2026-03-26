@@ -11,7 +11,7 @@ To install just run
 ```
 git clone github.com/HighTecno/dotfiles.git/ ~/dotfiles
 ```
-and then use stow to create symlinks
+and then use stow to create symlinks, in this example my neovim config
 
 ```
 stow nvim
