@@ -1,7 +1,22 @@
-vim.g.mapleader = '<space>'
-vim.g.maplocalleader = '<space>'
-vim.g.have_nerd_font = true
-vim.o.number =
-vim.o.mouse = 'a'
-vim.o.showmode = false
-
+vim.g.mapleader =       '<space>'
+vim.g.maplocalleader =  '<space>'
+vim.g.have_nerd_font =  true
+vim.o.number       =
+vim.o.mouse        =    'a'
+vim.o.showmode     =    false
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+vim.o.breakindent  =    true
+vim.o.undofile     =    true
+vim.o.ignorecase   =    true
+vim.o.smartcase    =    false
+vim.o.linecolumn   =    'yes'
+vim.o updatetime   =     200
+vim.o.timeoutlen   =     300
+vim.o.splitright   =     true
+vim.o.splitbelow   =     true
+vim.o.list         =     true
+vim.opt.listchars  =     { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.inccommand   =     'split'
+vim.o.cursorline   =     true
+vim.o.scrolloff    =     15
+vim.o.confirm      =     true
