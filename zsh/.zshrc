@@ -49,4 +49,16 @@ nvm() {
 eval "$(starship init zsh)"
 
 # bun completions
+HEAD
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+=======
+[ -s "/home/raphael/.bun/_bun" ] && source "/home/raphael/.bun/_bun"
+
+# bun
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+# opencode
+export PATH=/home/raphael/.opencode/bin:$PATH
+
+# opencode
+export PATH=/home/raphael/.opencode/bin:$PATH
