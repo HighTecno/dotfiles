@@ -1,0 +1,44 @@
+# ~/.config/starship.toml
+
+format = "$term$hostname$directory$git_branch$git_status$cmd_duration$character"
+
+[directory]
+style = "fg:#c0c8d4"
+truncation_length = 5
+truncate_to_repo = true
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = " "
+style = "fg:#8d97a8"
+
+[git_status]
+format = "[$all_status$ahead_behind]($style) "
+style = "fg:#8d97a8"
+modified = "~"
+untracked = "?"
+ahead = "⇡"
+behind = "⇣"
+
+[cmd_duration]
+min_time = 2_000
+format = "[$duration]($style) "
+style = "fg:#607080"
+
+[character]
+success_symbol = "[λ](fg:#a8b2be)"
+error_symbol = "[λ](fg:#505868)"
+
+[hostname]
+ssh_only = true
+format = "[$hostname]($style) "
+style = "fg:#607080"
+
+[nodejs]
+disabled = true
+
+[docker_context]
+disabled = true
+
+
+
