@@ -1,0 +1,162 @@
+/* ============================================================
+   Waybar — Moonstone Theme
+   Matches hyprlock.conf color palette
+   ============================================================ */
+
+/* --- Palette ---
+   background:      #0f1014
+   foreground:      #c0c8d4
+   inactive:        #2a2e38
+   muted:           #505868
+   accent:          #8d97a8
+   border:          #1a1d24
+   warning:         #607080
+   critical:        #4c5768
+*/
+
+* {
+    font-family: monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #0f1014;
+    color: #c0c8d4;
+    border-bottom: 1px solid #1a1d24;
+}
+
+/* ── Workspaces ─────────────────────────────────────────── */
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #505868;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s ease;
+}
+
+#workspaces button:hover {
+    color: #8d97a8;
+    background: #1a1d24;
+    border-bottom: 2px solid #505868;
+}
+
+#workspaces button.active {
+    color: #dce0e8;
+    border-bottom: 2px solid #8d97a8;
+}
+
+#workspaces button.urgent {
+    color: #4c5768;
+    border-bottom: 2px solid #4c5768;
+}
+
+/* ── Window title ───────────────────────────────────────── */
+
+#window {
+    color: #505868;
+    padding: 0 8px;
+}
+
+/* ── Media player ───────────────────────────────────────── */
+
+#mpris {
+    color: #8d97a8;
+    padding: 0 10px;
+}
+
+#mpris.paused {
+    color: #505868;
+}
+
+/* ── Right modules (shared) ─────────────────────────────── */
+
+#network,
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#tray {
+    padding: 0 10px;
+    color: #8d97a8;
+}
+
+#network,
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock {
+    border-left: 1px solid #1a1d24;
+}
+
+/* ── Network ────────────────────────────────────────────── */
+
+#network.disconnected {
+    color: #4c5768;
+}
+
+/* ── Volume ─────────────────────────────────────────────── */
+
+#pulseaudio.muted {
+    color: #505868;
+}
+
+/* ── CPU / Memory ───────────────────────────────────────── */
+
+#cpu,
+#memory {
+    color: #8d97a8;
+}
+
+/* ── Temperature ────────────────────────────────────────── */
+
+#temperature.critical {
+    color: #4c5768;
+}
+
+/* ── Battery ────────────────────────────────────────────── */
+
+#battery.charging,
+#battery.plugged {
+    color: #607080;
+}
+
+#battery.warning:not(.charging) {
+    color: #607080;
+}
+
+#battery.critical:not(.charging) {
+    color: #4c5768;
+}
+
+/* ── Clock ──────────────────────────────────────────────── */
+
+#clock {
+    color: #dce0e8;
+}
+
+/* ── Tray ───────────────────────────────────────────────── */
+
+#tray {
+    padding: 0 8px;
+    border-left: 1px solid #1a1d24;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}

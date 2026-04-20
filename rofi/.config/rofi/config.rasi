@@ -1,0 +1,82 @@
+/* ============================================================
+   Rofi Configuration — ~/.config/rofi/config.rasi
+   ============================================================ */
+
+configuration {
+
+    /* ---[ Modes ]--- */
+    modes:                      "drun,run,window,ssh";
+    combi-modes:                "drun,run,window";
+
+    /* ---[ Appearance ]--- */
+    font:                       "JetBrainsMono Nerd Font 13";
+    show-icons:                 true;
+    icon-theme:                 "Papirus-Dark";
+    drun-display-format:        "{name}";
+    display-drun:               " Apps";
+    display-run:                " Run";
+    display-window:             " Windows";
+    display-ssh:                "󰣀 SSH";
+
+    /* ---[ Behavior ]--- */
+    cycle:                      true;
+    fixed-num-lines:            true;
+    scroll-method:              1;
+    normalize-match:            true;
+    sorting-method:             "fzf";
+    sort:                       true;
+
+    /* ---[ Search ]--- */
+    case-sensitive:             false;
+    tokenize:                   true;
+    matching:                   "fuzzy";
+
+    /* ---[ History & Cache ]--- */
+    disable-history:            false;
+    max-history-size:           25;
+    drun-use-desktop-cache:     true;
+
+    /* ---[ Terminal ]--- */
+    terminal:                   "kitty";
+    run-shell-command:          "{terminal} -e {cmd}";
+
+    /* ---[ SSH ]--- */
+    parse-hosts:                true;
+    parse-known-hosts:          true;
+
+    /* ---[ Window mode ]--- */
+    window-match-fields:        "title,class,name";
+    window-thumbnail:           false;
+
+    /* ---[ Keybindings ]--- */
+    kb-move-front:              "Control+a";
+    kb-move-end:                "Control+e";
+    kb-move-word-back:          "Alt+b";
+    kb-move-word-forward:       "Alt+f";
+    kb-move-char-back:          "Left,Control+b";
+    kb-move-char-forward:       "Right,Control+f";
+    kb-remove-word-back:        "Control+BackSpace";
+    kb-remove-word-forward:     "Alt+d";
+    kb-remove-char-back:        "BackSpace";
+    kb-remove-char-forward:     "Delete";
+    kb-clear-line:              "Control+w";
+    kb-accept-entry:            "Return,KP_Enter";
+    kb-accept-alt:              "Shift+Return";
+    kb-cancel:                  "Escape,Control+c,Control+g";
+    kb-row-up:                  "Up,Control+p,ISO_Left_Tab";
+    kb-row-down:                "Down,Control+n";
+    kb-page-prev:               "Page_Up";
+    kb-page-next:               "Page_Down";
+    kb-row-first:               "Home";
+    kb-row-last:                "End";
+    kb-mode-next:               "Ctrl+Tab";
+    kb-mode-previous:           "Ctrl+Shift+Tab";
+    kb-toggle-case-sensitivity: "grave";
+    kb-secondary-paste:         "Control+v";
+
+    /* ---[ Mouse ]--- */
+    me-select-entry:            "MousePrimary";
+    me-accept-entry:            "MouseDPrimary";
+
+    @theme "~/.config/rofi/theme.rasi"
+}

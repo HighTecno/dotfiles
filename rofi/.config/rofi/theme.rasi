@@ -1,0 +1,199 @@
+/* ============================================================
+   Rofi Theme — ~/.config/rofi/theme.rasi
+   Dark Monochrome
+   ============================================================ */
+
+/* ---[ Color Palette ]--- */
+* {
+    bg0:        #111111;    /* Main background */
+    bg1:        #1a1a1a;    /* Slightly lighter — inputbar, selected bg */
+    bg2:        #242424;    /* Hover / alternate rows */
+    bg3:        #2e2e2e;    /* Borders, separators */
+
+    fg0:        #e8e8e8;    /* Primary text */
+    fg1:        #aaaaaa;    /* Secondary text / descriptions */
+    fg2:        #666666;    /* Dimmed — placeholder, prompt */
+
+    accent:     #cccccc;    /* Selected item text */
+    urgent:     #cc4444;    /* Urgent entries */
+
+    /* Wire up to rofi internals */
+    background-color:   transparent;
+    text-color:         @fg0;
+}
+
+/* ---[ Window ]--- */
+window {
+    background-color:   @bg0;
+    border:             1px solid;
+    border-color:       @bg3;
+    border-radius:      8px;
+    width:              640px;
+    padding:            0;
+    location:           center;
+    anchor:             center;
+    /* Disable Hyprland's animation on this window — add this rule to hyprland.conf:
+       windowrulev2 = animation slide, class:^(rofi)$   <-- or noanim */
+}
+
+/* ---[ Main Box ]--- */
+mainbox {
+    background-color:   transparent;
+    children:           [ inputbar, listview, message ];
+    spacing:            0;
+    padding:            0;
+}
+
+/* ---[ Input Bar ]--- */
+inputbar {
+    background-color:   @bg1;
+    border-radius:      8px 8px 0 0;
+    border:             0 0 1px 0;
+    border-color:       @bg3;
+    padding:            12px 16px;
+    spacing:            10px;
+    children:           [ prompt, entry, case-indicator ];
+}
+
+prompt {
+    background-color:   transparent;
+    text-color:         @fg2;
+    enabled:            true;
+    padding:            0 4px 0 0;
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         @fg0;
+    placeholder:        "Search...";
+    placeholder-color:  @fg2;
+    cursor:             text;
+    blink:              true;
+}
+
+case-indicator {
+    background-color:   transparent;
+    text-color:         @fg2;
+}
+
+/* ---[ List View ]--- */
+listview {
+    background-color:   transparent;
+    padding:            8px 0;
+    spacing:            0;
+    lines:              10;
+    columns:            1;
+    fixed-height:       true;
+    fixed-columns:      true;
+    scrollbar:          true;
+    reverse:            false;
+    flow:               vertical;
+}
+
+/* ---[ Scrollbar ]--- */
+scrollbar {
+    background-color:   @bg1;
+    handle-color:       @bg3;
+    handle-width:       4px;
+    border-radius:      4px;
+    width:              4px;
+    margin:             4px 4px 4px 0;
+}
+
+/* ---[ List Entries ]--- */
+element {
+    background-color:   transparent;
+    padding:            9px 16px;
+    spacing:            10px;
+    border-radius:      0;
+    orientation:        horizontal;
+}
+
+element normal.normal {
+    background-color:   transparent;
+    text-color:         @fg0;
+}
+
+element normal.urgent {
+    background-color:   transparent;
+    text-color:         @urgent;
+}
+
+element normal.active {
+    background-color:   transparent;
+    text-color:         @fg0;
+}
+
+element selected.normal {
+    background-color:   @bg2;
+    text-color:         @accent;
+    border-left:        2px solid;
+    border-color:       @accent;
+}
+
+element selected.urgent {
+    background-color:   @bg2;
+    text-color:         @urgent;
+}
+
+element selected.active {
+    background-color:   @bg2;
+    text-color:         @accent;
+}
+
+element alternate.normal {
+    background-color:   transparent;
+    text-color:         @fg0;
+}
+
+element-icon {
+    background-color:   transparent;
+    size:               24px;
+    cursor:             inherit;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    highlight:          bold;
+    cursor:             inherit;
+    vertical-align:     0.5;
+}
+
+/* ---[ Mode Switcher (sidebar) ]--- */
+mode-switcher {
+    background-color:   @bg1;
+    border:             1px 0 0 0;
+    border-color:       @bg3;
+    border-radius:      0 0 8px 8px;
+    padding:            6px 8px;
+    spacing:            4px;
+}
+
+button {
+    background-color:   transparent;
+    text-color:         @fg2;
+    border-radius:      4px;
+    padding:            4px 10px;
+    cursor:             pointer;
+}
+
+button selected {
+    background-color:   @bg2;
+    text-color:         @fg0;
+}
+
+/* ---[ Message Box (errors / info) ]--- */
+message {
+    background-color:   transparent;
+    border:             1px 0 0 0;
+    border-color:       @bg3;
+    padding:            8px 16px;
+}
+
+textbox {
+    background-color:   transparent;
+    text-color:         @fg1;
+    vertical-align:     0.5;
+    horizontal-align:   0.0;
+}
