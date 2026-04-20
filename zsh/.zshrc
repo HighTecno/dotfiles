@@ -1,64 +1,52 @@
-# ~/.zshrc
-
-# ── guard: bail if not interactive ───────────────────────────────────────────
 [[ $- != *i* ]] && return
 
-# ── history ──────────────────────────────────────────────────────────────────
+# history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory        # append instead of overwrite on exit
-setopt histignoredups       # no duplicate entries
-setopt histignorespace      # skip lines starting with a space
+setopt appendhistory histignoredups histignorespace
 
-# ── terminal ─────────────────────────────────────────────────────────────────
-export TERM=xterm-256color  # safe fallback for SSH / tmux
+# env
+export TERM=xterm-256color
+export PATH="$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 
-# ── path ─────────────────────────────────────────────────────────────────────
-export PATH="$HOME/.local/bin:$PATH"
+# bun
+export BUN_INSTALL="$HOME/.bun"
 
-# ── colors ───────────────────────────────────────────────────────────────────
-if [ -x /usr/bin/dircolors ]; then
+# colors
+if command -v dircolors >/dev/null; then
     eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
 fi
 alias ls='ls --color=auto'
 
-# ── completion ───────────────────────────────────────────────────────────────
-autoload -Uz compinit && compinit
+# completion (optimized)
+autoload -Uz compinit
+mkdir -p "$HOME/.cache/zsh"
+compinit -d "$HOME/.cache/zsh/zcompdump"
 
-# ── aliases ───────────────────────────────────────────────────────────────────
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# aliases
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 
-# ── plugins ───────────────────────────────────────────────────────────────────
-# install: sudo apt install zsh-autosuggestions zsh-syntax-highlighting
+# plugins 
 [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# ── nvm (node version manager) ───────────────────────────────────────────────
+# lazy nvm 
 export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]]          && source "$NVM_DIR/nvm.sh"
-[[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+nvm() {
+    unset -f nvm node npm npx
+    source "$NVM_DIR/nvm.sh"
+    nvm "$@"
+}
 
-# ── anthropic / ollama (claude code + jarvis) ────────────────────────────────
-export ANTHROPIC_API_KEY="ollama"                       # routes to local ollama
-export ANTHROPIC_BASE_URL="http://100.90.16.100:11434"  # hp-server via tailscale
-
-# ── prompt (starship) ────────────────────────────────────────────────────────
-# install: curl -sS https://starship.rs/install.sh | sh
-eval "$(starship init zsh)"
-
-
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+# starship 
 eval "$(starship init zsh)"
 
 # bun completions
-[ -s "/home/raphael/.bun/_bun" ] && source "/home/raphael/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
