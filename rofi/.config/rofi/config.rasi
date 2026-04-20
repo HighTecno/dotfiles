@@ -77,6 +77,6 @@ configuration {
     /* ---[ Mouse ]--- */
     me-select-entry:            "MousePrimary";
     me-accept-entry:            "MouseDPrimary";
-
-    @theme "~/.config/rofi/theme.rasi"
 }
+    @theme "~/.config/rofi/theme.rasi"
+
