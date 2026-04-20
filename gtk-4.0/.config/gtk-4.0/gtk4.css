@@ -1,0 +1,92 @@
+/* ╔══════════════════════════════════════════════════════════════╗ */
+/* ║  Moonstone — GTK4 override (gtk.css)                        ║ */
+/* ║  Place at: ~/.config/gtk-4.0/gtk.css                        ║ */
+/* ╚══════════════════════════════════════════════════════════════╝ */
+
+@define-color bg_base          #0f1014;
+@define-color bg_surface       #1a1d24;
+@define-color bg_elevated      #262930;
+@define-color bg_selection     #2a2e38;
+
+@define-color fg_primary       #c0c8d4;
+@define-color fg_secondary     #8d97a8;
+@define-color fg_muted         #505868;
+@define-color fg_bright        #dce0e8;
+
+@define-color border_subtle    #262930;
+@define-color border_normal    #374049;
+@define-color border_focus     #8d97a8;
+
+@define-color accent_bg_color  #2a2e38;
+@define-color accent_fg_color  #dce0e8;
+@define-color accent_color     #8d97a8;
+
+window {
+  background-color: @bg_base;
+  color: @fg_primary;
+}
+
+headerbar {
+  background-color: @bg_surface;
+  border-bottom: 1px solid @border_subtle;
+  color: @fg_primary;
+}
+
+.sidebar {
+  background-color: @bg_surface;
+  border-right: 1px solid @border_subtle;
+}
+
+listview row:selected,
+listview row:selected:focus {
+  background-color: @bg_selection;
+  color: @fg_bright;
+}
+
+listview row:hover {
+  background-color: @bg_elevated;
+}
+
+entry {
+  background-color: @bg_elevated;
+  border: 1px solid @border_subtle;
+  border-radius: 7px;
+  color: @fg_primary;
+}
+
+entry:focus {
+  border-color: @border_focus;
+}
+
+button {
+  background-color: transparent;
+  border: 1px solid @border_subtle;
+  border-radius: 7px;
+  color: @fg_secondary;
+}
+
+button:hover {
+  background-color: @bg_elevated;
+  color: @fg_primary;
+}
+
+scrollbar slider {
+  background-color: @border_normal;
+  border-radius: 100px;
+  min-width: 4px;
+  min-height: 4px;
+}
+
+scrollbar slider:hover {
+  background-color: @fg_muted;
+}
+
+menu {
+  background-color: @bg_elevated;
+  border: 1px solid @border_normal;
+  border-radius: 10px;
+}
+
+menuitem:hover {
+  background-color: @bg_selection;
+}

@@ -1,0 +1,638 @@
+/* ╔══════════════════════════════════════════════════════════════╗ */
+/* ║  Moonstone — GTK3 theme for Thunar / Hyprland               ║ */
+/* ║  Place at: ~/.config/gtk-3.0/gtk.css                        ║ */
+/* ║  Or use with nwg-look / lxappearance as a full GTK theme     ║ */
+/* ╚══════════════════════════════════════════════════════════════╝ */
+
+/* ── Variables ─────────────────────────────────────────────────── */
+@define-color bg_base          #0f1014;
+@define-color bg_surface       #1a1d24;
+@define-color bg_elevated      #262930;
+@define-color bg_selection     #2a2e38;
+@define-color bg_hover         #1e2228;
+
+@define-color fg_primary       #c0c8d4;
+@define-color fg_secondary     #8d97a8;
+@define-color fg_muted         #505868;
+@define-color fg_bright        #dce0e8;
+@define-color fg_disabled      #374049;
+
+@define-color border_subtle    #262930;
+@define-color border_normal    #374049;
+@define-color border_focus     #8d97a8;
+
+@define-color accent           #8d97a8;
+@define-color accent_dim       #5d6676;
+@define-color accent_bright    #a8b2be;
+
+/* ── Reset & Base ───────────────────────────────────────────────── */
+* {
+  -gtk-icon-style: symbolic;
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+window,
+.background {
+  background-color: @bg_base;
+  color: @fg_primary;
+  border: none;
+}
+
+/* ── Typography ─────────────────────────────────────────────────── */
+* {
+  font-family: "Geist", "Inter", "SF Pro Display", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+label {
+  color: @fg_primary;
+}
+
+/* ── Headerbar / Titlebar ───────────────────────────────────────── */
+headerbar,
+.titlebar {
+  background-color: @bg_surface;
+  color: @fg_primary;
+  border-bottom: 1px solid @border_subtle;
+  padding: 6px 10px;
+  min-height: 42px;
+  box-shadow: none;
+}
+
+headerbar .title {
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: @fg_primary;
+}
+
+headerbar .subtitle {
+  font-size: 11px;
+  color: @fg_muted;
+  letter-spacing: 0.02em;
+}
+
+/* window controls */
+.titlebar button,
+headerbar button {
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 4px;
+  color: @fg_muted;
+  min-width: 28px;
+  min-height: 28px;
+  transition: all 120ms ease;
+}
+
+.titlebar button:hover,
+headerbar button:hover {
+  background-color: @bg_elevated;
+  color: @fg_primary;
+}
+
+.titlebar button:active,
+headerbar button:active {
+  background-color: @bg_selection;
+}
+
+/* window close/min/max buttons */
+.titlebar button.close,
+headerbar button.close {
+  color: @fg_muted;
+}
+
+.titlebar button.close:hover,
+headerbar button.close:hover {
+  background-color: @bg_elevated;
+  color: @fg_bright;
+}
+
+/* ── Toolbar / Location Bar ─────────────────────────────────────── */
+toolbar,
+.toolbar {
+  background-color: @bg_surface;
+  border-bottom: 1px solid @border_subtle;
+  padding: 4px 8px;
+}
+
+.path-bar,
+.location-bar {
+  background-color: @bg_elevated;
+  border: 1px solid @border_subtle;
+  border-radius: 8px;
+  padding: 4px 10px;
+  margin: 4px 6px;
+}
+
+.path-bar button,
+.location-bar button {
+  background: transparent;
+  border: none;
+  color: @fg_secondary;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 13px;
+  transition: all 100ms ease;
+}
+
+.path-bar button:hover,
+.location-bar button:hover {
+  background-color: @bg_selection;
+  color: @fg_primary;
+}
+
+.path-bar button:last-child,
+.path-bar button.active {
+  color: @fg_bright;
+  font-weight: 500;
+}
+
+/* ── Sidebar / Navigation Panel ────────────────────────────────── */
+.sidebar,
+placessidebar,
+.places-sidebar {
+  background-color: @bg_surface;
+  border-right: 1px solid @border_subtle;
+  padding: 8px 0;
+}
+
+.sidebar row,
+placessidebar row,
+.places-sidebar row {
+  background: transparent;
+  padding: 1px 6px;
+  border-radius: 0;
+}
+
+.sidebar row:hover,
+placessidebar row:hover,
+.places-sidebar row:hover {
+  background-color: @bg_elevated;
+}
+
+.sidebar row:selected,
+placessidebar row:selected,
+.places-sidebar row:selected {
+  background-color: @bg_selection;
+  color: @fg_bright;
+}
+
+.sidebar row label,
+placessidebar row label,
+.places-sidebar row label {
+  color: @fg_secondary;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.sidebar row:selected label,
+placessidebar row:selected label,
+.places-sidebar row:selected label {
+  color: @fg_bright;
+}
+
+/* Sidebar section headers */
+.sidebar .sidebar-section-header label {
+  color: @fg_muted;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 12px 4px;
+}
+
+/* ── File View / Content Area ───────────────────────────────────── */
+.view,
+iconview,
+treeview,
+.nautilus-list-view,
+.thunar-view {
+  background-color: @bg_base;
+  color: @fg_primary;
+  border: none;
+}
+
+/* Icon view items */
+iconview item {
+  border-radius: 8px;
+  padding: 6px;
+  transition: background 100ms ease;
+}
+
+iconview item:hover {
+  background-color: @bg_elevated;
+}
+
+iconview item:selected {
+  background-color: @bg_selection;
+  color: @fg_bright;
+}
+
+iconview item label {
+  color: @fg_secondary;
+  font-size: 12px;
+}
+
+iconview item:selected label {
+  color: @fg_bright;
+}
+
+/* List view rows */
+treeview,
+.view {
+  background-color: @bg_base;
+}
+
+treeview row {
+  min-height: 30px;
+  padding: 0 4px;
+  border-radius: 0;
+  transition: background 80ms ease;
+}
+
+treeview row:hover {
+  background-color: @bg_elevated;
+}
+
+treeview row:selected {
+  background-color: @bg_selection;
+  color: @fg_bright;
+}
+
+treeview row:selected:hover {
+  background-color: @bg_selection;
+}
+
+/* List view header */
+treeview header button,
+.column-header {
+  background-color: @bg_surface;
+  color: @fg_muted;
+  border: none;
+  border-bottom: 1px solid @border_subtle;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}
+
+treeview header button:hover {
+  background-color: @bg_elevated;
+  color: @fg_primary;
+}
+
+/* Column separator */
+treeview header button separator {
+  background-color: @border_subtle;
+}
+
+/* ── Statusbar ──────────────────────────────────────────────────── */
+statusbar,
+.statusbar {
+  background-color: @bg_surface;
+  color: @fg_muted;
+  border-top: 1px solid @border_subtle;
+  font-size: 11px;
+  padding: 4px 12px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+scrollbar {
+  background: transparent;
+  border: none;
+  transition: opacity 200ms ease;
+}
+
+scrollbar slider {
+  background-color: @border_normal;
+  border-radius: 100px;
+  min-width: 4px;
+  min-height: 4px;
+  margin: 2px;
+  transition: all 150ms ease;
+}
+
+scrollbar slider:hover {
+  background-color: @fg_muted;
+  min-width: 6px;
+}
+
+scrollbar slider:active {
+  background-color: @fg_secondary;
+}
+
+scrollbar.horizontal slider {
+  min-height: 4px;
+  min-width: 20px;
+}
+
+scrollbar.vertical slider {
+  min-height: 20px;
+  min-width: 4px;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────── */
+button {
+  background-color: transparent;
+  color: @fg_secondary;
+  border: 1px solid @border_subtle;
+  border-radius: 7px;
+  padding: 5px 12px;
+  transition: all 120ms ease;
+}
+
+button:hover {
+  background-color: @bg_elevated;
+  color: @fg_primary;
+  border-color: @border_normal;
+}
+
+button:active {
+  background-color: @bg_selection;
+}
+
+button.suggested-action {
+  background-color: @bg_selection;
+  color: @fg_bright;
+  border-color: @accent_dim;
+}
+
+button.suggested-action:hover {
+  background-color: @accent_dim;
+  border-color: @accent;
+}
+
+button.destructive-action {
+  color: #a05060;
+  border-color: #3a2028;
+}
+
+button.destructive-action:hover {
+  background-color: #2a1820;
+  color: #c06070;
+}
+
+/* ── Entry / Text Input ─────────────────────────────────────────── */
+entry {
+  background-color: @bg_elevated;
+  color: @fg_primary;
+  border: 1px solid @border_subtle;
+  border-radius: 7px;
+  padding: 6px 10px;
+  caret-color: @fg_bright;
+  transition: border-color 150ms ease;
+}
+
+entry:focus {
+  border-color: @border_focus;
+  background-color: @bg_elevated;
+  box-shadow: none;
+}
+
+entry selection {
+  background-color: @bg_selection;
+  color: @fg_bright;
+}
+
+entry image {
+  color: @fg_muted;
+}
+
+/* Search entry in toolbar */
+.search-bar entry,
+searchbar entry {
+  background-color: @bg_elevated;
+  border-color: @border_subtle;
+  border-radius: 20px;
+  padding: 5px 14px;
+}
+
+/* ── Context Menu / Popover ─────────────────────────────────────── */
+menu,
+.menu,
+.context-menu {
+  background-color: @bg_elevated;
+  color: @fg_primary;
+  border: 1px solid @border_normal;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+menuitem {
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  transition: background 80ms ease;
+}
+
+menuitem:hover {
+  background-color: @bg_selection;
+  color: @fg_bright;
+}
+
+menuitem accelerator {
+  color: @fg_muted;
+  font-size: 11px;
+}
+
+separator.horizontal,
+menu separator {
+  background-color: @border_subtle;
+  min-height: 1px;
+  margin: 3px 6px;
+}
+
+/* ── Popover ────────────────────────────────────────────────────── */
+popover {
+  background-color: @bg_elevated;
+  border: 1px solid @border_normal;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+popover.menu modelbutton {
+  color: @fg_primary;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+popover.menu modelbutton:hover {
+  background-color: @bg_selection;
+}
+
+/* ── Notebook / Tabs ────────────────────────────────────────────── */
+notebook > header {
+  background-color: @bg_surface;
+  border-bottom: 1px solid @border_subtle;
+  padding: 0 6px;
+}
+
+notebook > header tabs {
+  margin: 0;
+}
+
+notebook > header tab {
+  background-color: transparent;
+  color: @fg_muted;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 8px 14px;
+  margin: 0 2px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  transition: all 150ms ease;
+}
+
+notebook > header tab:hover {
+  color: @fg_primary;
+  background-color: @bg_elevated;
+}
+
+notebook > header tab:checked,
+notebook > header tab.active {
+  color: @fg_bright;
+  border-bottom-color: @accent;
+  background-color: transparent;
+}
+
+notebook > header tab button {
+  color: @fg_muted;
+  min-width: 16px;
+  min-height: 16px;
+  padding: 2px;
+  border: none;
+  border-radius: 4px;
+}
+
+notebook > header tab button:hover {
+  color: @fg_primary;
+  background-color: @bg_selection;
+}
+
+/* ── Paned (splitter) ───────────────────────────────────────────── */
+paned > separator {
+  background-color: @border_subtle;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+paned > separator:hover {
+  background-color: @border_normal;
+}
+
+/* ── Checkboxes & Radios ────────────────────────────────────────── */
+checkbutton check,
+radiobutton radio {
+  background-color: @bg_elevated;
+  border: 1px solid @border_normal;
+  border-radius: 4px;
+  min-width: 16px;
+  min-height: 16px;
+  transition: all 120ms ease;
+}
+
+checkbutton check:hover,
+radiobutton radio:hover {
+  border-color: @border_focus;
+}
+
+checkbutton check:checked,
+radiobutton radio:checked {
+  background-color: @bg_selection;
+  border-color: @accent;
+  color: @fg_bright;
+}
+
+radiobutton radio {
+  border-radius: 50%;
+}
+
+/* ── Progress Bar ───────────────────────────────────────────────── */
+progressbar trough {
+  background-color: @bg_elevated;
+  border-radius: 100px;
+  min-height: 4px;
+}
+
+progressbar progress {
+  background-color: @accent;
+  border-radius: 100px;
+  min-height: 4px;
+}
+
+/* ── Tooltip ────────────────────────────────────────────────────── */
+tooltip {
+  background-color: @bg_elevated;
+  color: @fg_primary;
+  border: 1px solid @border_normal;
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* ── Symbolic icons ─────────────────────────────────────────────── */
+image,
+.symbolic {
+  color: @fg_muted;
+}
+
+image:hover,
+.symbolic:hover {
+  color: @fg_secondary;
+}
+
+/* ── Dialog ─────────────────────────────────────────────────────── */
+dialog {
+  background-color: @bg_surface;
+  border: 1px solid @border_normal;
+  border-radius: 12px;
+}
+
+dialog .dialog-action-area {
+  border-top: 1px solid @border_subtle;
+  padding: 10px;
+}
+
+/* ── Thunar-specific ────────────────────────────────────────────── */
+
+/* Rename inline entry */
+.thunar-renamer entry,
+ThunarRenamerEntry {
+  background-color: @bg_selection;
+  border: 1px solid @accent_dim;
+  border-radius: 5px;
+  color: @fg_bright;
+}
+
+/* Compact mode toolbar */
+.thunar-compact-view {
+  background-color: @bg_base;
+}
+
+/* Bookmark/shortcut rows */
+.thunar-shortcuts-view row {
+  min-height: 28px;
+  padding: 0 8px;
+  border-radius: 6px;
+  margin: 1px 6px;
+}
+
+.thunar-shortcuts-view row:hover {
+  background-color: @bg_elevated;
+}
+
+.thunar-shortcuts-view row:selected {
+  background-color: @bg_selection;
+}
+
+/* Properties dialog */
+.thunar-properties-dialog {
+  background-color: @bg_surface;
+}
