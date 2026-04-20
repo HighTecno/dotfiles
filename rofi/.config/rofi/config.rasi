@@ -62,8 +62,7 @@ configuration {
     kb-clear-line:              "Control+w";
     kb-accept-entry:            "Return,KP_Enter";
     kb-accept-alt:              "Shift+Return";
-    kb-cancel:                  "Escape,Control+c,Control+g";
-    kb-row-up:                  "Up,Control+p,ISO_Left_Tab";
+    kb-cancel:                  "Escape";
     kb-row-down:                "Down,Control+n";
     kb-page-prev:               "Page_Up";
     kb-page-next:               "Page_Down";
