@@ -60,5 +60,3 @@ HEAD
 # opencode
 export PATH=/home/raphael/.opencode/bin:$PATH
 
-# opencode
-export PATH=/home/raphael/.opencode/bin:$PATH
