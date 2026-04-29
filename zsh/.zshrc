@@ -60,3 +60,13 @@ HEAD
 # opencode
 export PATH=/home/raphael/.opencode/bin:$PATH
 
+
+# aliases
+
+alias fucking="sudo"
+alias
+alias l='ls'
+alias ll='ls -lh'
+alias la='ls -A'
+alias lla="ls -la"
+alias :wq="exit"
