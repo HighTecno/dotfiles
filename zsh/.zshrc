@@ -37,6 +37,28 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# history substring search
+[[ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ]] && \
+    source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# bind arrows after sourcing
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# autopair
+[[ -f /usr/share/zsh/plugins/zsh-autopair/autopair.zsh ]] && \
+    source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
+
+# you-should-use
+[[ -f /usr/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh ]] && \
+    source /usr/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
+
+# zoxide (replaces cd)
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+
+# fzf
+source <(fzf --zsh)
+
 # lazy nvm 
 export NVM_DIR="$HOME/.nvm"
 nvm() {
@@ -73,3 +95,6 @@ alias ll='ls -lh'
 alias la='ls -A'
 alias lla="ls -la"
 alias :wq="exit"
+
+
+fastfetch

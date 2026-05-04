@@ -1,38 +1,110 @@
 # ~/.config/starship.toml
+# Moonstone — cool slate monochrome
 
-format = "$term$hostname$directory$git_branch$git_status$cmd_duration$character"
+format = """
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$git_state\
+$fill\
+$rust\
+$python\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
+
+# ── Core ──────────────────────────────────────────────────────────────────────
+
+[fill]
+symbol = " "
 
 [directory]
 style = "fg:#c0c8d4"
-truncation_length = 5
+truncation_length = 4
 truncate_to_repo = true
-
-[git_branch]
-format = "[$symbol$branch]($style) "
-symbol = " "
-style = "fg:#8d97a8"
-
-[git_status]
-format = "[$all_status$ahead_behind]($style) "
-style = "fg:#8d97a8"
-modified = "~"
-untracked = "?"
-ahead = "⇡"
-behind = "⇣"
-
-[cmd_duration]
-min_time = 2_000
-format = "[$duration]($style) "
-style = "fg:#607080"
+home_symbol = "~"
+read_only = " 󰌾"
+read_only_style = "fg:#505868"
+format = "[$path]($style)[$read_only]($read_only_style) "
 
 [character]
 success_symbol = "[λ](fg:#a8b2be)"
-error_symbol = "[λ](fg:#505868)"
+error_symbol  = "[λ](fg:#505868)"
+vimcmd_symbol = "[λ](fg:#6d7a8a) "   # dim shift when in vi-normal
+
+# ── Git ───────────────────────────────────────────────────────────────────────
+
+[git_branch]
+symbol = " "
+style = "fg:#8d97a8"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+truncation_length = 28
+truncation_symbol = "…"
+
+[git_status]
+style = "fg:#8d97a8"
+format = "[$all_status$ahead_behind]($style) "
+modified  = "~"
+untracked = "?"
+staged    = "+"
+deleted   = "✘"
+renamed   = "»"
+stashed   = "$"
+ahead     = "⇡$count"
+behind    = "⇣$count"
+diverged  = "⇕⇡$ahead_count⇣$behind_count"
+conflicted = "!"
+
+[git_state]
+# shows REBASE, MERGE, CHERRY-PICK, etc.
+style = "fg:#607080"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+rebase = "rebase"
+merge  = "merge"
+revert = "revert"
+cherry_pick = "cherry"
+bisect = "bisect"
+am = "am"
+am_or_rebase = "am/rebase"
+
+# ── Languages (only shown when in-project) ────────────────────────────────────
+
+[rust]
+symbol = " "
+style = "fg:#607080"
+format = "[$symbol$version]($style) "
+detect_files = ["Cargo.toml", "Cargo.lock", ".rust-version"]
+
+[python]
+symbol = " "
+style = "fg:#607080"
+format = "[$symbol$version( \\($virtualenv\\))]($style) "
+detect_files = ["requirements.txt", "pyproject.toml", "setup.py", ".python-version"]
+python_binary = ["python3", "python"]
+
+# ── System ────────────────────────────────────────────────────────────────────
 
 [hostname]
 ssh_only = true
-format = "[$hostname]($style) "
-style = "fg:#607080"
+style = "fg:#505868"
+format = "[$hostname]($style) · "   # · separator so it reads as a prefix
+
+[jobs]
+symbol = "  "
+style = "fg:#505868"
+threshold = 1
+number_threshold = 2
+format = "[$symbol$number]($style)"
+
+[cmd_duration]
+min_time = 2_000
+style = "fg:#505868"
+format = "[$duration]($style)"
+show_milliseconds = false
+
+# ── Disabled noise ────────────────────────────────────────────────────────────
 
 [nodejs]
 disabled = true
@@ -40,5 +112,11 @@ disabled = true
 [docker_context]
 disabled = true
 
+[package]
+disabled = true
 
+[conda]
+disabled = true
 
+[line_break]
+disabled = false
